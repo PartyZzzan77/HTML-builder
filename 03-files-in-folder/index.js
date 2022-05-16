@@ -25,6 +25,6 @@ fs.stat(TARGET_PATH, (err, stats) => {
           }
         });
       })
-      .catch((err) => stdout.write(err.message));
+      .catch((err) => stdout.write(`ERROR: ${err.message}`));
   }
 });
