@@ -9,7 +9,7 @@ stdout.write('Please enter your message\n(to exit use exit or cmd+C)\n');
 
 stdin.on('data', (data) => {
   let msg = data.toString().trim();
-  if (msg !== 'exit') {
+  if (msg.toLowerCase() !== 'exit') {
     output.write(`${msg.trim()} `);
   } else {
     stdout.write(PARTING);
