@@ -6,11 +6,12 @@ const MERGE_PATH = path.join(__dirname, 'project-dist', 'bundle.css');
 const STYLES_PATH = path.join(__dirname, 'styles');
 
 const mergeStyles = async (styles, container) => {
-  const writableStream = fs.createWriteStream(container);
-  const stylesBuffer = [];
+  try {
+    const writableStream = fs.createWriteStream(container);
+    const stylesBuffer = [];
 
-  await readdir(styles, { withFileTypes: true }).then(async (resolve) => {
-    for await (let chunk of resolve) {
+    const dir = await readdir(styles, { withFileTypes: true });
+    for await (let chunk of dir) {
       const filePath = path.join(styles, chunk.name);
       const fileParams = path.parse(filePath);
 
@@ -22,9 +23,11 @@ const mergeStyles = async (styles, container) => {
       }
     }
     writableStream.write(stylesBuffer.join('\n').toString());
-  });
+  } catch (err) {
+    console.log('Error: ', err.message);
+  }
 };
 
-(async function () {
+(async () => {
   await mergeStyles(STYLES_PATH, MERGE_PATH);
 })();
