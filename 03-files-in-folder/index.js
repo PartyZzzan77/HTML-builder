@@ -28,6 +28,5 @@ const secretFolder = async (target) => {
   }
 };
 
-(async () => {
-  await secretFolder(TARGET_PATH);
-})();
+secretFolder(TARGET_PATH);
+

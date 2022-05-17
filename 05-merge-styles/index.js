@@ -23,6 +23,4 @@ const mergeStyles = async (styles, container) => {
   }
 };
 
-(async () => {
-  await mergeStyles(STYLES_PATH, MERGE_PATH);
-})();
+mergeStyles(STYLES_PATH, MERGE_PATH);

@@ -24,6 +24,4 @@ const copyDirectory = async (target, copy) => {
   }
 };
 
-(async () => {
-  await copyDirectory(TARGET_PATH, COPY_PATH);
-})();
+copyDirectory(TARGET_PATH, COPY_PATH);
