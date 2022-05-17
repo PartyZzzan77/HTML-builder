@@ -4,14 +4,14 @@ const { stdout } = process;
 
 const TARGET_PATH = path.join(__dirname, 'secret-folder');
 
-(async () => {
+const secretFolder=async (target) => {
   try {
-    const stats = await stat(TARGET_PATH);
+    const stats = await stat(target);
     if (stats.isDirectory()) {
-      const dir = await readdir(TARGET_PATH, { withFileTypes: true });
+      const dir = await readdir(target, { withFileTypes: true });
       for await (const file of dir) {
         if (file.isFile()) {
-          const filePath = path.join(TARGET_PATH, file.name);
+          const filePath = path.join(target, file.name);
           const fileParams = path.parse(filePath);
 
           const filesStat = await stat(filePath);
@@ -26,4 +26,8 @@ const TARGET_PATH = path.join(__dirname, 'secret-folder');
   } catch (err) {
     console.log('Error: ', err.message);
   }
+};
+
+(async () => {
+  await secretFolder(TARGET_PATH);
 })();
