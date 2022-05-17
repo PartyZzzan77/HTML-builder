@@ -4,7 +4,7 @@ const { stdout } = process;
 
 const TARGET_PATH = path.join(__dirname, 'secret-folder');
 
-const secretFolder=async (target) => {
+const secretFolder = async (target) => {
   try {
     const stats = await stat(target);
     if (stats.isDirectory()) {
