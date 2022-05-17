@@ -8,21 +8,16 @@ const STYLES_PATH = path.join(__dirname, 'styles');
 const mergeStyles = async (styles, container) => {
   try {
     const writableStream = fs.createWriteStream(container);
-    const stylesBuffer = [];
-
     const dir = await readdir(styles, { withFileTypes: true });
     for await (let chunk of dir) {
       const filePath = path.join(styles, chunk.name);
       const fileParams = path.parse(filePath);
 
-      if (fileParams.ext === '.css') {
+      if (fileParams.ext === '.css' && chunk.isFile()) {
         const readableStream = fs.createReadStream(filePath, 'utf-8');
-        for await (let chunk of readableStream) {
-          stylesBuffer.push(chunk);
-        }
+        readableStream.pipe(writableStream);
       }
     }
-    writableStream.write(stylesBuffer.join('\n').toString());
   } catch (err) {
     console.log('Error: ', err.message);
   }
