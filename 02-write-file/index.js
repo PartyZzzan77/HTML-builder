@@ -14,12 +14,12 @@ stdin.on('data', (data) => {
     output.write(`${msg.trim()} `);
     output.uncork();
   } else {
-    stdout.write(PARTING);
+    stdout.write(PARTING.trim());
     exit();
   }
 });
 
 process.on('SIGINT', () => {
-  stdout.write(PARTING);
+  stdout.write(PARTING.trim());
   exit();
 });
