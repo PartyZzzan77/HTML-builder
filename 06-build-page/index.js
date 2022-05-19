@@ -39,7 +39,7 @@ class BuilderPage {
         }
       }
     } catch (err) {
-      console.log('copyDirectory Error: ', err.message);
+      console.log(`_copyDirectory Error: ${err.message}`);
     }
   }
 
@@ -68,7 +68,7 @@ class BuilderPage {
       }
       writableStream.write(targetTemplate);
     } catch (err) {
-      console.log('createTemplate Error: ', err.message);
+      console.log(`_createTemplate Error: ${err.message}`);
     }
   }
 
@@ -90,7 +90,7 @@ class BuilderPage {
       }
       writableStream.write(buffer.join('\n').trim());
     } catch (err) {
-      console.log('mergeStyles Error: ', err.message);
+      console.log(`_mergeStyles Error: ${err.message}`);
     }
   }
 
@@ -106,7 +106,7 @@ class BuilderPage {
       );
       await this._mergeStyles(this.stylePath, this.mergePath);
     } catch (err) {
-      console.log('builderPage: ', err.message);
+      console.log(`builderPage: ${err.message}`);
     }
   }
 }
