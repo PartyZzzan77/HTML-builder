@@ -55,7 +55,7 @@ class BuilderPage {
         const filePath = path.join(components, chunkComponent.name);
         const fileParams = path.parse(filePath);
 
-        if (fileParams.ext === '.html' && chunkComponent.isFile()) {
+        if (chunkComponent.isFile() && fileParams.ext === '.html') {
           let readableStream = fs.createReadStream(filePath);
           for await (const chunk of readableStream) {
             readableStream = chunk;

@@ -15,7 +15,7 @@ const mergeStyles = async (styles, container) => {
       const filePath = path.join(styles, chunk.name);
       const fileParams = path.parse(filePath);
 
-      if (fileParams.ext === '.css' && chunk.isFile()) {
+      if (chunk.isFile() && fileParams.ext === '.css') {
         const readableStream = fs.createReadStream(filePath, 'utf-8');
         for await (const chunk of readableStream) {
           buffer.push(chunk);
