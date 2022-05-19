@@ -65,15 +65,19 @@ const mergeStyles = async (styles, container) => {
   try {
     const writableStream = fs.createWriteStream(container);
     const dir = await readdir(styles, { withFileTypes: true });
+    let buffer = [];
     for await (let chunk of dir) {
       const filePath = path.join(styles, chunk.name);
       const fileParams = path.parse(filePath);
 
       if (fileParams.ext === '.css' && chunk.isFile()) {
         const readableStream = fs.createReadStream(filePath, 'utf-8');
-        readableStream.pipe(writableStream);
+        for await (const chunk of readableStream) {
+          buffer.push(chunk);
+        }
       }
     }
+    writableStream.write(buffer.join('\n').trim());
   } catch (err) {
     console.log('mergeStyles Error: ', err.message);
   }
