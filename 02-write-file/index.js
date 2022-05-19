@@ -11,7 +11,7 @@ stdin.on('data', (data) => {
   let msg = data.toString().trim();
   if (msg.toLowerCase() !== 'exit') {
     output.cork();
-    output.write(`${msg.trim()} `);
+    output.write(`${msg.trim()}\n`);
     output.uncork();
   } else {
     stdout.write(PARTING.trim());
