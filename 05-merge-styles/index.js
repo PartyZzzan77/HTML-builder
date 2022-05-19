@@ -24,7 +24,7 @@ const mergeStyles = async (styles, container) => {
     }
     writableStream.write(buffer.join('\n').trim());
   } catch (err) {
-    console.log('Error: ', err.message);
+    console.log(`mergeStyles Error: ${err.message}`);
   }
 };
 

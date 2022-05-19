@@ -20,7 +20,7 @@ const copyDirectory = async (target, copy) => {
       }
     }
   } catch (err) {
-    console.log('Error: ', err.message);
+    console.log(`copyDirectory Error: ${err.message}`);
   }
 };
 

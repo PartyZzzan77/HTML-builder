@@ -24,7 +24,7 @@ const secretFolder = async (target) => {
       }
     }
   } catch (err) {
-    console.log('Error: ', err.message);
+    console.log(`secretFolder Error: ${err.message}`);
   }
 };
 
