@@ -76,8 +76,8 @@ class BuilderPage {
     try {
       const writableStream = fs.createWriteStream(container);
       const dir = await readdir(styles, { withFileTypes: true });
-      let buffer = [];
-      for await (let chunk of dir) {
+      const buffer = [];
+      for await (const chunk of dir) {
         const filePath = path.join(styles, chunk.name);
         const fileParams = path.parse(filePath);
 

@@ -9,9 +9,9 @@ const mergeStyles = async (styles, container) => {
   try {
     const writableStream = fs.createWriteStream(container);
     const dir = await readdir(styles, { withFileTypes: true });
-    let buffer = [];
+    const buffer = [];
 
-    for await (let chunk of dir) {
+    for await (const chunk of dir) {
       const filePath = path.join(styles, chunk.name);
       const fileParams = path.parse(filePath);
 
