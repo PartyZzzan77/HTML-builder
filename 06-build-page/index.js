@@ -94,7 +94,7 @@ class BuilderPage {
     }
   }
 
-  async builderPage() {
+  async buildPage() {
     try {
       await rm(this.copyFolderPath, { recursive: true, force: true });
       await mkdir(this.copyFolderPath, { recursive: true });
@@ -111,5 +111,5 @@ class BuilderPage {
   }
 }
 
-const collector = new BuilderPage(paths);
-collector.builderPage();
+const builderPage = new BuilderPage(paths);
+builderPage.buildPage();
