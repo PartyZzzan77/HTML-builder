@@ -88,7 +88,7 @@ class BuilderPage {
           }
         }
       }
-      writableStream.write(buffer.join('\n'));
+      writableStream.write(buffer.reverse().join('\n'));
     } catch (err) {
       console.log(`_mergeStyles Error: ${err.message}`);
     }
