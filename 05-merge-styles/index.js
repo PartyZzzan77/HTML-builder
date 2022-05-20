@@ -18,11 +18,11 @@ const mergeStyles = async (styles, container) => {
       if (chunk.isFile() && fileParams.ext === '.css') {
         const readableStream = fs.createReadStream(filePath, 'utf-8');
         for await (const chunk of readableStream) {
-          buffer.push(chunk);
+          buffer.push(chunk.trim());
         }
       }
     }
-    writableStream.write(buffer.join('\n').trim());
+    writableStream.write(buffer.join('\n'));
   } catch (err) {
     console.log(`mergeStyles Error: ${err.message}`);
   }
