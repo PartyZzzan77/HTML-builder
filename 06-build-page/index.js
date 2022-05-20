@@ -106,7 +106,7 @@ class BuilderPage {
       );
       await this._mergeStyles(this.stylePath, this.mergePath);
     } catch (err) {
-      console.log(`builderPage: ${err.message}`);
+      console.log(`buildPage: ${err.message}`);
     }
   }
 }
